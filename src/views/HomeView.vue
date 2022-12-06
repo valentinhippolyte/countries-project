@@ -1,4 +1,8 @@
-<script></script>
+<script setup>
+import { useCurrentUser } from "vuefire";
+const user = useCurrentUser();
+</script>
+
 <template>
   <div id="header">
     <img
@@ -11,6 +15,7 @@
 
     <div>
       <h1>Countries APP</h1>
+      <p v-if="user">Welcome {{ user.email }}</p>
     </div>
   </div>
 </template>
