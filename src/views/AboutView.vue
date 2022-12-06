@@ -27,7 +27,26 @@
       >
     </div>
   </v-card>
+  <h1>Nom de pays</h1>
 </template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      countries: null,
+    };
+  },
+  mounted() {
+    axios.get("https://restcountries.com/v3.1/all").then((response) => {
+      this.countries = response.data;
+      console.log(this.countries);
+    });
+  },
+};
+</script>
 
 <style>
 .action {

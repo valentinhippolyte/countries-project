@@ -6,7 +6,7 @@ const user = useCurrentUser();
 </script>
 
 <template>
-  <v-toolbar title="Application">
+  <v-toolbar title="Countries App">
     <nav>
       <RouterLink to="/" class="routerLink">Home</RouterLink>
       <RouterLink to="/about" class="routerLink">About</RouterLink>
@@ -41,7 +41,8 @@ export default {
 a {
   text-decoration: none;
 }
-.routerLink{
+.routerLink {
   color: white;
+  margin-right: 40px;
 }
 </style>
