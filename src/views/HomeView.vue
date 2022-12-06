@@ -1,5 +1,22 @@
+<script></script>
 <template>
-  <main>
-    <p>This is an Home page</p>
-  </main>
+  <div id="header">
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.jpg"
+      width="125"
+      height="125"
+    />
+
+    <div>
+      <h1>Countries APP</h1>
+    </div>
+  </div>
 </template>
+
+<style>
+#header {
+  text-align: center;
+}
+</style>
