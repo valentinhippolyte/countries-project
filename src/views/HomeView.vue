@@ -8,7 +8,7 @@ const user = useCurrentUser();
     <img
       alt="Vue logo"
       class="logo"
-      src="@/assets/logo.jpg"
+      src="@/assets/logo.png"
       width="125"
       height="125"
     />
@@ -42,5 +42,11 @@ const user = useCurrentUser();
 <style>
 #header {
   text-align: center;
+}
+.logo {
+  margin-top: 40px;
+}
+p {
+  padding: 0 40px 0 40px;
 }
 </style>

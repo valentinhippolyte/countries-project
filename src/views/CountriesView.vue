@@ -58,13 +58,13 @@ export default {
   flex-wrap: wrap;
   align-items: stretch;
 }
-.card{
+.card {
   flex: 0 0 200px;
-    margin: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
-.card_label{
+.card_label {
   display: flex;
   vertical-align: middle;
 }
