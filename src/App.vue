@@ -9,7 +9,7 @@ const user = useCurrentUser();
   <v-toolbar title="Countries App">
     <nav>
       <RouterLink to="/" class="routerLink">Home</RouterLink>
-      <RouterLink to="/about" class="routerLink">About</RouterLink>
+      <RouterLink to="/countries" class="routerLink">Countries</RouterLink>
 
       <RouterLink v-if="!user" to="/login"
         ><v-btn v-if="!user" variant="outlined" color="orange-lighten-2"
