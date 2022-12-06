@@ -1,7 +1,6 @@
 <script></script>
 
 <template>
-  <p>This is Countries page</p>
   <v-icon icon="mdi-vuetify" color="black"></v-icon>
 
   <div class="cards">
@@ -17,12 +16,12 @@
         :src="countries.flags.png"
         cover
       >
-        <!-- <v-card-title>{{ countries.name.common }}</v-card-title> -->
       </v-img>
-      <div class="card_label">
+      <div class="label">
         {{ countries.name.common }}
+
         <v-card-actions
-          ><v-btn class="action" color="orange-lighten-2" variant="text">
+          ><v-btn color="orange-lighten-2" variant="text">
             <i class="material-icons">favorite</i>
           </v-btn></v-card-actions
         >
@@ -50,9 +49,6 @@ export default {
 </script>
 
 <style>
-.action {
-  vertical-align: middle;
-}
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -64,8 +60,9 @@ export default {
   border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
-.card_label {
+.label {
   display: flex;
-  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
 }
 </style>
