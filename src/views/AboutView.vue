@@ -27,7 +27,10 @@
       >
     </div>
   </v-card>
-  <h1>Nom de pays</h1>
+  <div :key="index" v-for="(countries, index) in countries">
+    <h1>{{ countries.name.common }}</h1>
+    <img :src="countries.flags.png" />
+  </div>
 </template>
 
 <script>
