@@ -7,5 +7,4 @@
   <p>This is an About page</p>
 </template>
 
-<style>
-</style>
+<style></style>
