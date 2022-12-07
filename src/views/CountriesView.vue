@@ -5,7 +5,9 @@
   <v-btn icon @click="search">
     <i class="material-icons">search</i>
   </v-btn>
-  <div class="cards">
+  <v-btn @click="getCountries">Clear search</v-btn>
+
+  <div v-if="!searchByName" class="cards">
     <v-card
       :key="index"
       v-for="(countries, index) in countries"
@@ -21,8 +23,25 @@
       </v-img>
       <div class="label">
         {{ countries.name.common }}
-        <!-- {{ countries.translations.fra.common }} translate in french  -->
-
+        <v-card-actions
+          ><v-btn color="orange-lighten-2" variant="text">
+            <i class="material-icons">favorite</i>
+          </v-btn></v-card-actions
+        >
+      </div>
+    </v-card>
+  </div>
+  <div v-if="searchByName" class="cards">
+    <v-card class="card" max-width="400">
+      <v-img
+        class="align-end text-white"
+        height="200"
+        :src="this.country.flags.png"
+        cover
+      >
+      </v-img>
+      <div class="label">
+        {{ this.country.name.common }}
         <v-card-actions
           ><v-btn color="orange-lighten-2" variant="text">
             <i class="material-icons">favorite</i>
@@ -40,16 +59,21 @@ export default {
   data() {
     return {
       countries: null,
+      searchByName: null,
     };
   },
   methods: {
     async search() {
+      this.searchByName = true;
       const basrUrl = "https://restcountries.com/v3.1";
       const url = `${basrUrl}/name/${this.query}`;
       const response = await fetch(url);
       const data = await response.json();
-      this.recipes = data;
-      console.log(data);
+      this.country = data[0];
+      console.log(this.country);
+    },
+    getCountries() {
+      this.searchByName = false;
     },
   },
   mounted() {

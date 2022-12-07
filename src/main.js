@@ -14,7 +14,7 @@ import "material-design-icons-iconfont/dist/material-design-icons.css";
 // firebase
 import { VueFire, VueFireAuth } from "vuefire";
 import { firebaseApp } from "./firebase";
-import { getCurrentUser, useCurrentUser  } from "vuefire";
+import { getCurrentUser, useCurrentUser } from "vuefire";
 
 const app = createApp(App);
 
