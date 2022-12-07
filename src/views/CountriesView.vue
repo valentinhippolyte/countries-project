@@ -19,11 +19,15 @@ const user = useCurrentUser();
 </script>
 
 <template>
-  <v-text-field label="query" v-model="searchQuery" />
-  <v-btn icon @click="search">
-    <i class="material-icons">search</i>
-  </v-btn>
-  <v-btn @click="getAll()">Clear search</v-btn>
+  <div id="section_field">
+    <!-- <v-text-field class="field_label" label="query" v-model="searchQuery" />
+     -->
+    <v-text-field :loading="loading" density="compact" variant="solo" label="tap a country" v-model="searchQuery"
+      append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="search"></v-text-field>
+    <v-btn class="field_label" @click="getAll()"
+      ><i class="material-icons">close</i></v-btn
+    >
+  </div>
 
   <div class="cards">
     <v-card
@@ -42,9 +46,14 @@ const user = useCurrentUser();
       <div class="label">
         {{ country.name?.common }}
         <v-card-actions
-          ><v-btn v-if="user" :icon="country.isFavorite ? 'mdi-star-check' : 'mdi-star'" color="primary"
-            @click="toggleFavorite(country)">
-          </v-btn></v-card-actions>
+          ><v-btn
+            v-if="user"
+            :icon="country.isFavorite ? 'mdi-cards-heart' : 'mdi-heart-outline'"
+            color="primary"
+            @click="toggleFavorite(country)"
+          >
+          </v-btn
+        ></v-card-actions>
       </div>
     </v-card>
   </div>
@@ -57,6 +66,8 @@ export default {
     return {
       countries: [],
       searchQuery: "",
+      loaded: false,
+      loading: false,
     };
   },
   methods: {
@@ -67,6 +78,12 @@ export default {
       });
     },
     async search() {
+      this.loading = true
+
+      setTimeout(() => {
+        this.loading = false
+        this.loaded = true
+      }, 1200);
       const baseUrl = "https://restcountries.com/v3.1";
       const url = `${baseUrl}/name/${this.searchQuery}`;
       const response = await fetch(url);
@@ -117,6 +134,14 @@ export default {
 </script>
 
 <style>
+#section_field {
+  display: flex;
+  vertical-align: baseline;
+}
+/* .field_label {
+  display: inline-block;
+  vertical-align: middle;
+} */
 .cards {
   display: flex;
   flex-wrap: wrap;
