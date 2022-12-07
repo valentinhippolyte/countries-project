@@ -33,7 +33,8 @@
   </div>
   <div v-if="searchByName" class="cards">
     <v-card class="card" max-width="400">
-      <v-img v-if="contry?.flags?.png"
+      <v-img
+        v-if="contry?.flags?.png"
         class="align-end text-white"
         height="200"
         :src="country.flags.png"
@@ -60,7 +61,7 @@ export default {
     return {
       countries: [],
       searchByName: null,
-      country:{},
+      country: {},
     };
   },
   methods: {
@@ -91,6 +92,9 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
 .card {
   flex: 0 0 200px;

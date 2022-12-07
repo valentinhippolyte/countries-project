@@ -39,8 +39,11 @@ router.beforeEach(async () => {
 });
 
 // do not go to login while connected
+// Ne pas permettre l'affichage de la vue login si on est déjà conneté
+// ⚠ Ceci est juste esthétique
 router.beforeEach(async (to) => {
-  if (to.name === "login" && useCurrentUser()) {
+  const currentUser = await getCurrentUser();
+  if (to.name === "login" && currentUser) {
     return { name: "home" };
   }
 });
