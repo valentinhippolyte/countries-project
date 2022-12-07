@@ -5,7 +5,7 @@
   <v-btn icon @click="search">
     <i class="material-icons">search</i>
   </v-btn>
-  <v-btn @click="getCountries">Clear search</v-btn>
+  <v-btn @click="getAll()">Clear search</v-btn>
 
   <div class="cards">
     <v-card
@@ -31,7 +31,6 @@
       </div>
     </v-card>
   </div>
-  <p v-if="errorMessage">0 Value !!</p>
 </template>
 
 <script>
@@ -40,28 +39,25 @@ export default {
   data() {
     return {
       countries: [],
-      errorMessage: false,
     };
   },
   methods: {
+    getAll() {
+      axios.get("https://restcountries.com/v3.1/all").then((response) => {
+        this.countries = response.data;
+        console.log(this.countries);
+      });
+    },
     async search() {
       const baseUrl = "https://restcountries.com/v3.1";
       const url = `${baseUrl}/name/${this.query}`;
       const response = await fetch(url);
       const data = await response.json();
       this.countries = data;
-      if (data.empty) {
-        errorMessage = true;
-      }
-      console.log(data);
     },
-    getCountries() {},
   },
   mounted() {
-    axios.get("https://restcountries.com/v3.1/all").then((response) => {
-      this.countries = response.data;
-      console.log(this.countries);
-    });
+    this.getAll();
   },
 };
 </script>
@@ -71,6 +67,9 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
 
 .card {
