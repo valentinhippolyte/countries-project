@@ -33,15 +33,15 @@
   </div>
   <div v-if="searchByName" class="cards">
     <v-card class="card" max-width="400">
-      <v-img
+      <v-img v-if="contry?.flags?.png"
         class="align-end text-white"
         height="200"
-        :src="this.country.flags.png"
+        :src="country.flags.png"
         cover
       >
       </v-img>
       <div class="label">
-        {{ this.country.name.common }}
+        {{ country.name.common }}
         <v-card-actions
           ><v-btn color="orange-lighten-2" variant="text">
             <i class="material-icons">favorite</i>
@@ -58,8 +58,9 @@ import axios from "axios";
 export default {
   data() {
     return {
-      countries: null,
+      countries: [],
       searchByName: null,
+      country:{},
     };
   },
   methods: {
@@ -70,7 +71,7 @@ export default {
       const response = await fetch(url);
       const data = await response.json();
       this.country = data[0];
-      console.log(this.country);
+      console.log(this.country.flags.png);
     },
     getCountries() {
       this.searchByName = false;
