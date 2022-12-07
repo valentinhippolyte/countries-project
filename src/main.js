@@ -14,7 +14,7 @@ import "material-design-icons-iconfont/dist/material-design-icons.css";
 // firebase
 import { VueFire, VueFireAuth } from "vuefire";
 import { firebaseApp } from "./firebase";
-import { getCurrentUser } from "vuefire";
+import { getCurrentUser, useCurrentUser  } from "vuefire";
 
 const app = createApp(App);
 
@@ -33,11 +33,17 @@ app.use(VueFire, {
   modules: [VueFireAuth()],
 });
 
-// Pour récupérer l'utilisateur actuel. A mettre avant le app.use(router)
+// retrieve user
 router.beforeEach(async () => {
   await getCurrentUser();
 });
 
+// do not go to login while connected
+router.beforeEach(async (to) => {
+  if (to.name === "login" && useCurrentUser()) {
+    return { name: "home" };
+  }
+});
 app.use(router);
 
 app.mount("#app");

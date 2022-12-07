@@ -1,8 +1,10 @@
 <script></script>
 
 <template>
-  <v-icon icon="mdi-vuetify" color="black"></v-icon>
-
+  <v-text-field label="query" v-model="query" />
+  <v-btn icon @click="search">
+    <i class="material-icons">search</i>
+  </v-btn>
   <div class="cards">
     <v-card
       :key="index"
@@ -19,6 +21,7 @@
       </v-img>
       <div class="label">
         {{ countries.name.common }}
+        <!-- {{ countries.translations.fra.common }} translate in french  -->
 
         <v-card-actions
           ><v-btn color="orange-lighten-2" variant="text">
@@ -38,6 +41,16 @@ export default {
     return {
       countries: null,
     };
+  },
+  methods: {
+    async search() {
+      const basrUrl = "https://restcountries.com/v3.1";
+      const url = `${basrUrl}/name/${this.query}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      this.recipes = data;
+      console.log(data);
+    },
   },
   mounted() {
     axios.get("https://restcountries.com/v3.1/all").then((response) => {
