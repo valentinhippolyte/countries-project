@@ -10,11 +10,12 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "@mdi/font/css/materialdesignicons.css";
 
 // firebase
 import { VueFire, VueFireAuth } from "vuefire";
 import { firebaseApp } from "./firebase";
-import { getCurrentUser, useCurrentUser } from "vuefire";
+import { getCurrentUser } from "vuefire";
 
 const app = createApp(App);
 
@@ -38,7 +39,7 @@ router.beforeEach(async () => {
   await getCurrentUser();
 });
 
-// do not go to login while connected
+// don't go to login while connected
 // Ne pas permettre l'affichage de la vue login si on est déjà conneté
 // ⚠ Ceci est juste esthétique
 router.beforeEach(async (to) => {
