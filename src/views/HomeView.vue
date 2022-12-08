@@ -4,7 +4,9 @@ const user = useCurrentUser();
 </script>
 
 <template>
-  <div id="header">
+  <div
+    class="d-flex flex-column fill-height justify-center align-center text-white"
+  >
     <img
       alt="Vue logo"
       class="logo"
@@ -12,42 +14,13 @@ const user = useCurrentUser();
       width="125"
       height="125"
     />
+    <h1 v-if="user" class="text-h4 font-weight-thin mb-4">
+      Welcome {{ user.email }}
+    </h1>
+    <h1 v-if="!user" class="text-h4 font-weight-thin mb-4">Welcome</h1>
 
-    <h1 v-if="user">Welcome {{ user.email }}</h1>
-    <h1 v-if="!user">Welcome</h1>
+    <h4 class="subheading">Discovering the world's countries!</h4>
   </div>
-  <br /><br />
-  <p>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s, when an unknown printer took a galley of type and scrambled it to
-    make a type specimen book. It has survived not only five centuries, but also
-    the leap into electronic typesetting, remaining essentially unchanged. It
-    was popularised in the 1960s with the release of Letraset sheets containing
-    Lorem Ipsum passages, and more recently with desktop publishing software
-    like Aldus PageMaker including versions of Lorem Ipsum.
-  </p>
-  <br /><br />
-  <p>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s, when an unknown printer took a galley of type and scrambled it to
-    make a type specimen book. It has survived not only five centuries, but also
-    the leap into electronic typesetting, remaining essentially unchanged. It
-    was popularised in the 1960s with the release of Letraset sheets containing
-    Lorem Ipsum passages, and more recently with desktop publishing software
-    like Aldus PageMaker including versions of Lorem Ipsum.
-  </p>
 </template>
 
-<style>
-#header {
-  text-align: center;
-}
-.logo {
-  margin-top: 40px;
-}
-p {
-  padding: 0 40px 0 40px;
-}
-</style>
+<style></style>

@@ -33,8 +33,8 @@ const user = useCurrentUser();
 
   <div class="cards">
     <v-card
-      :key="index"
-      v-for="(country, index) in countries"
+      :key="country"
+      v-for="country in countries"
       class="card"
       max-width="400"
     >
@@ -168,7 +168,6 @@ export default {
   border-radius: none;
 }
 .v-btn {
-  height: 0;
-  background-color: aquamarine;
+  border-radius: 0;
 }
 </style>
