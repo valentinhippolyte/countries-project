@@ -163,4 +163,10 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.v-field, .v-btn {
+  border-radius: 0px;
+}
+.v-btn--size-default {
+  --v-btn-height: 0;
+}
 </style>
