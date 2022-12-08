@@ -14,6 +14,7 @@ const user = useCurrentUser();
     />
 
     <h1 v-if="user">Welcome {{ user.email }}</h1>
+    <h1 v-if="!user">Welcome</h1>
   </div>
   <br /><br />
   <p>

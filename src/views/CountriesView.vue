@@ -1,10 +1,5 @@
 <script setup>
-import {
-  // useFirestore,
-  getCurrentUser,
-  // useCollection,
-  useCurrentUser,
-} from "vuefire";
+import { getCurrentUser, useCurrentUser } from "vuefire";
 import {
   collection,
   query,
@@ -20,10 +15,17 @@ const user = useCurrentUser();
 
 <template>
   <div id="section_field">
-    <!-- <v-text-field class="field_label" label="query" v-model="searchQuery" />
-     -->
-    <v-text-field :loading="loading" density="compact" variant="solo" label="tap a country" v-model="searchQuery"
-      append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="search"></v-text-field>
+    <v-text-field
+      :loading="loading"
+      density="compact"
+      variant="solo"
+      label="tap a country"
+      v-model="searchQuery"
+      append-inner-icon="mdi-magnify"
+      single-line
+      hide-details
+      @click:append-inner="search"
+    ></v-text-field>
     <v-btn class="field_label" @click="getAll()"
       ><i class="material-icons">close</i></v-btn
     >
@@ -39,12 +41,12 @@ const user = useCurrentUser();
       <v-img
         class="align-end text-white"
         height="200"
-        :src="country?.flags?.png"
+        :src="country.flags.png"
         cover
       >
       </v-img>
       <div class="label">
-        {{ country.name?.common }}
+        {{ country.name.common }}
         <v-card-actions
           ><v-btn
             v-if="user"
@@ -74,15 +76,14 @@ export default {
     getAll() {
       axios.get("https://restcountries.com/v3.1/all").then((response) => {
         this.countries = response.data;
-        console.log(this.countries);
       });
     },
     async search() {
-      this.loading = true
+      this.loading = true;
 
       setTimeout(() => {
-        this.loading = false
-        this.loaded = true
+        this.loading = false;
+        this.loaded = true;
       }, 1200);
       const baseUrl = "https://restcountries.com/v3.1";
       const url = `${baseUrl}/name/${this.searchQuery}`;
@@ -128,7 +129,6 @@ export default {
     for (const country of this.countries) {
       country.isFavorite = await this.isFavorite(country);
     }
-    console.table(this.countries);
   },
 };
 </script>
@@ -138,10 +138,11 @@ export default {
   display: flex;
   vertical-align: baseline;
 }
-/* .field_label {
+.field_label {
   display: inline-block;
   vertical-align: middle;
-} */
+  border-radius: 0;
+}
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -163,10 +164,11 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.v-field, .v-btn {
-  border-radius: 0px;
+.v-field {
+  border-radius: none;
 }
-.v-btn--size-default {
-  --v-btn-height: 0;
+.v-btn {
+  height: 0;
+  background-color: aquamarine;
 }
 </style>
