@@ -36,7 +36,6 @@ export default {
           this.email,
           this.password
         );
-        console.log("register success");
         this.$router.push("/");
       } catch (error) {
         this.failed = true;
@@ -53,7 +52,6 @@ export default {
       this.failed = false;
       try {
         await signInWithEmailAndPassword(getAuth(), this.email, this.password);
-        console.log("register success");
         this.$router.push("/");
       } catch (error) {
         this.failed = true;
