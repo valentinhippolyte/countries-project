@@ -73,10 +73,9 @@ export default {
     };
   },
   methods: {
-    getAll() {
-      axios.get("https://restcountries.com/v3.1/all").then((response) => {
-        this.countries = response.data;
-      });
+    async getAll() {
+      const response = await axios.get("https://restcountries.com/v3.1/all");
+      this.countries = response.data;
     },
     async search() {
       this.loading = true;
@@ -100,7 +99,6 @@ export default {
         where("name", "==", country.name.common)
       );
       const querySnapshot = await getDocs(q);
-      console.log("is Favorite: ", !querySnapshot.empty);
       return !querySnapshot.empty;
     },
     async toggleFavorite(country) {
@@ -125,7 +123,7 @@ export default {
     },
   },
   async mounted() {
-    this.getAll();
+    await this.getAll();
     for (const country of this.countries) {
       country.isFavorite = await this.isFavorite(country);
     }
