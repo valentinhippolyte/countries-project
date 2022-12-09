@@ -26,7 +26,7 @@ const user = useCurrentUser();
     </nav>
   </v-toolbar>
   <v-alert v-if="isLogout" border="top" color="red lighten-2" dark>
-    Disconnect
+    Disconnected
   </v-alert>
   <RouterView />
 </template>
@@ -52,6 +52,9 @@ export default {
 <style>
 a {
   text-decoration: none;
+}
+nav {
+  margin-right: 10px;
 }
 .routerLink {
   color: white;
