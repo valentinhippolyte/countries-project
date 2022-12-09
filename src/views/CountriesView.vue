@@ -76,6 +76,9 @@ export default {
     async getAll() {
       const response = await axios.get("https://restcountries.com/v3.1/all");
       this.countries = response.data;
+      for (const country of this.countries) {
+        country.isFavorite = await this.isFavorite(country);
+      }
     },
     async search() {
       this.loading = true;
@@ -89,6 +92,9 @@ export default {
       const response = await fetch(url);
       const data = await response.json();
       this.countries = data;
+      for (const country of this.countries) {
+        country.isFavorite = await this.isFavorite(country);
+      }
     },
     async isFavorite(country) {
       const db = getFirestore();
@@ -124,9 +130,6 @@ export default {
   },
   async mounted() {
     await this.getAll();
-    for (const country of this.countries) {
-      country.isFavorite = await this.isFavorite(country);
-    }
   },
 };
 </script>

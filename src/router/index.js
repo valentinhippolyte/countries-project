@@ -23,8 +23,8 @@ const router = createRouter({
       component: LoginView,
     },
     {
-      name: "NotFound",
       path: "/:pathMatch(.*)*",
+      name: "NotFound",
       component: PageNotFound,
     },
   ],
