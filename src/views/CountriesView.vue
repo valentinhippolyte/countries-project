@@ -41,12 +41,12 @@ const user = useCurrentUser();
       <v-img
         class="align-end text-white"
         height="200"
-        :src="country.flags.png"
+        :src="country.flags?.png"
         cover
       >
       </v-img>
       <div class="label">
-        {{ country.name.common }}
+        {{ country.name?.common }}
         <v-card-actions
           ><v-btn
             v-if="user"

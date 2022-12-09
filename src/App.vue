@@ -25,14 +25,26 @@ const user = useCurrentUser();
       >
     </nav>
   </v-toolbar>
+  <v-alert v-if="isLogout" border="top" color="red lighten-2" dark>
+    Disconnect
+  </v-alert>
   <RouterView />
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      isLogout: false,
+    };
+  },
   methods: {
     async logout() {
       await signOut(getAuth());
+      this.isLogout = true;
+      setTimeout(() => {
+        this.isLogout = false;
+      }, 5000);
     },
   },
 };
