@@ -25,6 +25,7 @@ const user = useCurrentUser();
       single-line
       hide-details
       @click:append-inner="search"
+      @keydown.enter="search"
     ></v-text-field>
     <v-btn class="field_label" @click="getAll()"
       ><i class="material-icons">close</i></v-btn
